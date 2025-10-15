@@ -11,6 +11,7 @@ import com.pruebatecnica.users.dto.response.UserResponse;
 import com.pruebatecnica.users.mapper.UserMapper;
 import com.pruebatecnica.users.model.User;
 import com.pruebatecnica.users.repository.UserRepository;
+import com.pruebatecnica.users.dto.response.SuccessResponse;
 import com.pruebatecnica.users.utils.Constantes;
 
 import java.time.LocalDateTime;
@@ -27,12 +28,13 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public UserResponse createUser(UserRequest userRequest) {
+    public SuccessResponse<UserResponse> createUser(UserRequest userRequest) {
         if (userRepository.existsByEmail(userRequest.getEmail())) {
             throw new RuntimeException(Constantes.EMAIL_ALREADY_EXISTS);
         }
         User user = userMapper.toEntity(userRequest);
-        return userMapper.toDto(userRepository.save(user));
+        User savedUser = userRepository.save(user);
+        return SuccessResponse.of(Constantes.USER_CREATED, userMapper.toDto(savedUser));
     }
 
     @Override
@@ -51,7 +53,7 @@ public class UserService implements IUserService{
 
     @Override
     @Transactional
-    public UserResponse updateUser(Long id, UserRequest userRequest) {
+    public SuccessResponse<UserResponse> updateUser(Long id, UserRequest userRequest) {
         User existingUser = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException(Constantes.USER_NOT_FOUND));
         
@@ -68,7 +70,7 @@ public class UserService implements IUserService{
         existingUser.setUpdatedAt(LocalDateTime.now());
         
         User updatedUser = userRepository.save(existingUser);
-        return userMapper.toDto(updatedUser);
+        return SuccessResponse.of(Constantes.USER_UPDATED, userMapper.toDto(updatedUser));
     }
 
     @Override

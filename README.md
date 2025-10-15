@@ -16,7 +16,7 @@ A Spring Boot-based microservice for user management with RESTful API endpoints.
 - Java 17 or higher
 - Maven 3.6 or higher
 - Docker (optional, for containerization)
-- PostgreSQL (or adjust the database configuration as needed)
+- h2 (or adjust the database configuration as needed)
 
 ## 🛠️ Installation
 

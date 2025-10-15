@@ -1,5 +1,6 @@
 package com.pruebatecnica.users.controller;
 
+import com.pruebatecnica.users.dto.response.SuccessResponse;
 import com.pruebatecnica.users.dto.response.UserResponse;
 import com.pruebatecnica.users.dto.request.UserRequest;
 import com.pruebatecnica.users.service.IUserService;
@@ -25,7 +26,7 @@ public class UserController {
      
      @PostMapping
      @Operation(summary = "Create user")
-     public UserResponse createUser(@RequestBody UserRequest userRequest) {
+     public SuccessResponse<UserResponse> createUser(@RequestBody UserRequest userRequest) {
          return userService.createUser(userRequest);
      }
      
@@ -43,7 +44,7 @@ public class UserController {
      
      @PutMapping("/{id}")
      @Operation(summary = "Update user")
-     public UserResponse updateUser(@PathVariable Long id, @RequestBody UserRequest userRequest) {
+     public SuccessResponse<UserResponse> updateUser(@PathVariable Long id, @RequestBody UserRequest userRequest) {
          return userService.updateUser(id, userRequest);
      }
      
