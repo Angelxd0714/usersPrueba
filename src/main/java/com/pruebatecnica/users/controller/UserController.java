@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -26,7 +27,7 @@ public class UserController {
      
      @PostMapping
      @Operation(summary = "Create user")
-     public SuccessResponse<UserResponse> createUser(@RequestBody UserRequest userRequest) {
+     public SuccessResponse<UserResponse> createUser(@Valid @RequestBody UserRequest userRequest) {
          return userService.createUser(userRequest);
      }
      
@@ -44,7 +45,7 @@ public class UserController {
      
      @PutMapping("/{id}")
      @Operation(summary = "Update user")
-     public SuccessResponse<UserResponse> updateUser(@PathVariable Long id, @RequestBody UserRequest userRequest) {
+ public SuccessResponse<UserResponse> updateUser(@PathVariable Long id, @Valid @RequestBody UserRequest userRequest) {
          return userService.updateUser(id, userRequest);
      }
      

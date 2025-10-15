@@ -8,14 +8,14 @@ import lombok.Data;
 @Data
 @Builder
 public class UserRequest {
-    @NotBlank(message = "Name is required")
+    @NotBlank(message = "El nombre es requerido")
     private String name;
     
-    @NotBlank(message = "Email is required")
-    @Email(message = "Email should be valid")
+    @NotBlank(message = "El correo es requerido")
+    @Email(message = "El correo debe ser valido")
     private String email;
     
-    @Size(min = 6, message = "Password must be at least 6 characters long")
+    @Size(min = 6, message = "La contraseña debe tener al menos 6 caracteres")
     private String password;
 
     // Getters and Setters
