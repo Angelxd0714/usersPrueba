@@ -33,8 +33,8 @@ public class UserService implements IUserService{
             throw new RuntimeException(Constantes.EMAIL_ALREADY_EXISTS);
         }
         User user = userMapper.toEntity(userRequest);
-        User savedUser = userRepository.save(user);
-        return SuccessResponse.of(Constantes.USER_CREATED, userMapper.toDto(savedUser));
+        userRepository.save(user);
+        return SuccessResponse.of(Constantes.USER_CREATED);
     }
 
     @Override
@@ -69,8 +69,8 @@ public class UserService implements IUserService{
         
         existingUser.setUpdatedAt(LocalDateTime.now());
         
-        User updatedUser = userRepository.save(existingUser);
-        return SuccessResponse.of(Constantes.USER_UPDATED, userMapper.toDto(updatedUser));
+        userRepository.save(existingUser);
+        return SuccessResponse.of(Constantes.USER_UPDATED);
     }
 
     @Override

@@ -48,13 +48,13 @@ Run the container:
 docker-compose up -d
 ```
 
-The application will be available at `http://localhost:8080`
+The application will be available at `http://localhost:8086`
 
 ## 📚 API Documentation
 
 Once the application is running, you can access the OpenAPI documentation at:
-- Swagger UI: http://localhost:8080/swagger-ui.html
-- OpenAPI JSON: http://localhost:8080/v3/api-docs
+- Swagger UI: http://localhost:8086/swagger-ui.html
+- OpenAPI JSON: http://localhost:8086/v3/api-docs
 
 ## 🏗️ Project Structure
 

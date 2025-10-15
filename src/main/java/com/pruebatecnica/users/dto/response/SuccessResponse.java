@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SuccessResponse<T> {
     private String message;
-    private T data;
+  
 
-    public static <T> SuccessResponse<T> of(String message, T data) {
-        return new SuccessResponse<>(message, data);
+    public static <T> SuccessResponse<T> of(String message) {
+        return new SuccessResponse<>(message);
     }
 }
