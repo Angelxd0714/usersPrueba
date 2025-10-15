@@ -1,7 +1,7 @@
 package com.pruebatecnica.users.service;
 
-import com.pruebatecnica.users.dto.UserRequest;
-import com.pruebatecnica.users.dto.UserResponse;
+import com.pruebatecnica.users.dto.request.UserRequest;
+import com.pruebatecnica.users.dto.response.UserResponse;
 import java.util.List;
 
 public interface IUserService {
