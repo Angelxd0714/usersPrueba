@@ -15,8 +15,6 @@ public class UserMapper {
         User user = new User();
         user.setName(request.getName());
         user.setEmail(request.getEmail());
-        // Note: The User class doesn't have a password field in the model we can see
-        // If you need to set a password, you'll need to add the field to the User class first
         return user;
     }
 
